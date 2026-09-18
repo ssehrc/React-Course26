@@ -1,37 +1,21 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
-
-//class components: 
-/*
- class ClassComponent extends React.Component{
-  render(){
-    return <h2> class component </h2>
-  }
-}*/
-
-const Card = ({title, rating, isCool}) => {
-  const [hasLiked, setHasLiked] = useState(false);
-  return (
-    <div className="card" >
-      <h2>{title}</h2>
-      <button onClick={() => setHasLiked(!hasLiked)}>
-        {hasLiked ? "❤️" : "🤍"}
-      </button>
-    </div>
-  )
-}
+import React, { useState } from 'react'
+import Search from './components/Search.jsx'
 
 const App = () => {
-  return (
-    <div className='card-container'>
-      <Card title="Star Wars" rating={5} isCool={true}/>
-      <Card title="Avatar" rating={6}/>
-      <Card title="The Lion King" />
-    </div>
+  const [seachTerm, setSearchTerm] = useState('I AM BATMAN');
+  return ( 
+    <main>
+      <div className="pattern" />
+
+        <div className="wrapper"> 
+          <header>
+            <img src="./hero.png" alt="Hero Banner" />
+            <h1>Find <span className="text-gradient">Movies</span> You'll Enjoy Without the Hassle.</h1>
+          </header>
+          <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        </div>
+    </main>
   )
 }
-
+ 
 export default App
